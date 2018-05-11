@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash_bg"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LDKeyGuard"
+        android:gravity="center"
+        android:textSize="48sp"
+        android:textColor="@color/white"
+        android:paddingTop="280dp"
+        android:textStyle="bold"/>
+</android.support.constraint.ConstraintLayout>
