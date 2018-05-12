@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <!--主密码相关-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="主密码相关"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:padding="12dp"
+        android:background="@color/light_gray"
+        android:clickable="false"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+    <TextView
+        android:id="@+id/change_password_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="修改主密码"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_margin="18dp"
+        android:clickable="true"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
+
+    <!--密码生成器相关-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="密码生成器相关"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:padding="12dp"
+        android:background="@color/light_gray"
+        android:clickable="false"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+    <RelativeLayout
+        android:id="@+id/password_length"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="密码长度"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_margin="18dp"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/colorPrimary"
+            android:text="8"
+            android:textSize="16sp"
+            android:layout_margin="18dp"
+            android:gravity="center"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+
+    <android.support.v7.widget.SwitchCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:id="@+id/switch_alphabat"
+        android:text="大小写"
+        android:textSize="16sp"
+        android:textOn="大小写组合"
+        android:textOff="仅小写"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+
+    <android.support.v7.widget.SwitchCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:id="@+id/switch_number"
+        android:text="包含数字"
+        android:textSize="16sp"
+        android:textOn="包含数字"
+        android:textOff="不包含数字"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+
+    <android.support.v7.widget.SwitchCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:id="@+id/switch_symbol"
+        android:text="包含符号"
+        android:textSize="16sp"
+        android:textOn="包含符号"
+        android:textOff="不包含符号"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
+</LinearLayout>

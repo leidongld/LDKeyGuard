@@ -43,7 +43,7 @@ public class BaseSecure {
 
         for (User user : userList) {
             if(user.getUsername().equals(username)
-                    && user.getPassword().equals(password)){
+                    && BCrypt.checkpw(password, user.getPassword())){
                 return true;
             }
         }
@@ -99,5 +99,18 @@ public class BaseSecure {
 
         }
         return categoryId;
+    }
+
+    /**
+     * 验证老密码是否正确
+     *
+     * @param oldPassword
+     * @return
+     */
+    public static boolean isOldPasswordCorrect(String oldPassword) {
+        UserDao userDao = MyApplication.getInstance().getDaoSession().getUserDao();
+        User user = userDao.queryBuilder().where(UserDao.Properties.Id.eq(1L)).unique();
+        String realPassword = user.getPassword();
+        return BCrypt.checkpw(oldPassword, realPassword);
     }
 }

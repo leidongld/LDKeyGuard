@@ -21,4 +21,12 @@ public class Constants {
     public static final int OTHER_ID = 5;
 
     public static final String ITEM_ID = "item_id";
+
+    public static final String IS_ALPHABAT_ON = "is_alphabat_on";
+
+    public static final String IS_NUMBER_ON = "is_number_on";
+
+    public static final String IS_SYMBOL_ON = "is_symbol_on";
+
+    public static final String KEY_LENGTH = "key_length";
 }

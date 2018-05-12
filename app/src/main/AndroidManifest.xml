@@ -38,6 +38,18 @@
         <!--条目详情界面-->
         <activity android:name=".ui.DetailActivity">
         </activity>
+
+        <!--开发者介绍界面-->
+        <activity android:name=".ui.DevActivity">
+        </activity>
+
+        <!--设置界面-->
+        <activity android:name=".ui.SettingsActivity">
+        </activity>
+
+        <!--更改主密码界面-->
+        <activity android:name=".ui.ChangePasswordActivity">
+        </activity>
     </application>
 
 </manifest>

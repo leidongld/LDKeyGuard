@@ -4,9 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.leidong.ldkeyguard.MyApplication;
 import com.example.leidong.ldkeyguard.R;
@@ -68,13 +69,36 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId == R.id.menu_dev){
+            Intent intent = new Intent(MainActivity.this, DevActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if(itemId == R.id.menu_settings){
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         initWidgets();
 
         ItemDao itemDao = MyApplication.getInstance().getDaoSession().getItemDao();
         List<Item> itemList = itemDao.queryBuilder().where(ItemDao.Properties.CategoryId.eq(5)).list();
-        Toast.makeText(MainActivity.this, "现在有 " + itemList.size() + " 个条目", Toast.LENGTH_LONG).show();
     }
 
     /**

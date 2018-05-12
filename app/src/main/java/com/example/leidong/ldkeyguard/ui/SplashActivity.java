@@ -46,6 +46,7 @@ public class SplashActivity extends Activity {
      */
     void initWidgets() {
         mMySP = new MySP(this).getmMySP();
+
     }
 
     /**

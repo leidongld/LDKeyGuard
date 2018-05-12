@@ -1,5 +1,7 @@
 package com.example.leidong.ldkeyguard.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +13,7 @@ import com.example.leidong.ldkeyguard.R;
 import com.example.leidong.ldkeyguard.beans.User;
 import com.example.leidong.ldkeyguard.constants.Constants;
 import com.example.leidong.ldkeyguard.greendao.UserDao;
+import com.example.leidong.ldkeyguard.secures.BCrypt;
 import com.example.leidong.ldkeyguard.storage.MySP;
 
 import butterknife.BindView;
@@ -51,6 +54,11 @@ public class RegisterActivity extends BaseActivity {
     @Override
     void initWidgets() {
         mMySP = new MySP(this).getmMySP();
+
+        mMySP.save(Constants.IS_ALPHABAT_ON, true);
+        mMySP.save(Constants.IS_NUMBER_ON, true);
+        mMySP.save(Constants.IS_SYMBOL_ON, true);
+        mMySP.save(Constants.KEY_LENGTH, 8);
     }
 
     @Override
@@ -70,7 +78,7 @@ public class RegisterActivity extends BaseActivity {
             UserDao userDao = MyApplication.getInstance().getDaoSession().getUserDao();
             User user = new User();
             user.setUsername(username);
-            user.setPassword(password1);
+            user.setPassword(BCrypt.hashpw(password1, BCrypt.gensalt()));
             userDao.insert(user);
 
             mMySP.save(Constants.IS_HAS_USER, true);
@@ -78,6 +86,21 @@ public class RegisterActivity extends BaseActivity {
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
+        }
+        else{
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("注意");
+            builder.setMessage("您的输入不符合要求，请仔细检查！");
+            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    mUsernameEt.setText(null);
+                    mPassword1Et.setText(null);
+                    mPassword2Et.setText(null);
+                }
+            });
+            builder.setNegativeButton("取消", null);
+            builder.create().show();
         }
     }
 }
